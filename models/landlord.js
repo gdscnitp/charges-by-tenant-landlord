@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt")
-const {isEmail,isDate} = require("validator")
+const {isEmail,isDate, isPostalCode} = require("validator")
+const { Schema } = mongoose;
+mongoose.Promise = global.Promise;
 
-const landlordSchema = new mongoose.Schema({
+const landlordSchema = new Schema({
     name:{
         type:String,
         required:[true,'Please enter a name'],
@@ -28,35 +30,35 @@ const landlordSchema = new mongoose.Schema({
     },
     password:{
         type:String,
-        required:[true,'Please enter your password'],
+        // requirednfmbadd:[true,'Please enter your password'],
         min:5
     },
     DOB:{
         type:Date,
-        required:true,
+        // required:true,
         validate:[isDate,'Please enter a valid date']
     },
     address:[{
         first_line:{
             type:String,
-            required:[true,'Please enter your address'],
+            // required:[true,'Please enter your address'],
             
         },
         city:{
             type:String,
-            required:[true,'Please enter your city']
+            // required:[true,'Please enter your city']
         },
         state:{
             type:String,
-            required:[true,'Please enter your state']
+            // required:[true,'Please enter your state']
         },
         Country:{
             type:String,
-            required:[true,'Please enter your country']
+            // required:[true,'Please enter your country']
         },
         pincode:{
             type:Number,
-            required:[true,'Please enter your pincode'],
+            // required:[true,'Please enter your pincode'],
             validate:[isPostalCode,'Please enter proper pin code']
         },
         landmark:{
@@ -67,21 +69,21 @@ const landlordSchema = new mongoose.Schema({
     }],
     occupation:{
         type:String,
-        required:[true,'Please enter your occupation']
+        // required:[true,'Please enter your occupation']
     },
     verification:{
         type:String,
         enum:['Aadhar','VoterID','PanCard'],
-        required:[true,'Please enter your verification id']
+        // required:[true,'Please enter your verification id']
     },
     account:[{
         acc_num:{
             type:String,
-            required:true
+            // required:true
         },
         ifsc:{
             type:String,
-            required:true
+            // required:true
         }
     }],
     site_list:{
@@ -89,13 +91,14 @@ const landlordSchema = new mongoose.Schema({
     }
 },{timestamps:true});
 
-//when landlord updates password
-landlordSchema.pre('save',(next)=>{
+// when landlord updates password
 
+landlordSchema.pre('save',(next)=>{
+    var user = this;
     if(!this.isModified('password')){
         return next();
     }
-    const user = this;
+    
     bcrypt.genSalt(10, function(err, salt){
         if (err){ return next(err) }
 
@@ -113,4 +116,4 @@ landlordSchema.pre('save',(next)=>{
 
 });
 
-module.exports = mongoose.model("Landlord",landlordSchema);
+module.exports = mongoose.models.Landlord || mongoose.model("Landlord",landlordSchema);

@@ -3,7 +3,7 @@ const log4jsLogger = require("../loggers/log4js_module");
 const config = require("../config/config");
 var logger = log4jsLogger.getLogger("DataBase");
 
-//mongoose.set("useCreateIndex", true);
+// mongoose.set("useCreateIndex", true);
 
 connectMongoDb();
 
@@ -26,7 +26,7 @@ mongoose.connection.on("connected", function (success) {
 	connectionAttempt = 0;
 });
 
-function connectMongoDb() {
+export default function connectMongoDb() {
 	console.log(config.MONGO_URL)
 	mongoose.connect(
 		config.MONGO_URL,
@@ -56,3 +56,6 @@ function connectMongoDb() {
 		}
 	);
 }
+
+module.exports = connectMongoDb
+
