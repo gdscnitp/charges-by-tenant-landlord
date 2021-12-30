@@ -1,0 +1,5 @@
+[2021-12-30T10:51:32.161] [INFO] DataBase - {
+  r: 'mongodb',
+  msg: 'Database_successfully_connected',
+  body: 'success'
+}
