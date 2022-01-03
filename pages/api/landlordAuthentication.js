@@ -14,7 +14,9 @@ export default async function handler(req, res) {
       try {
         //take the input from the users
         var {name, email, username, contact} = req.body;
-        var password = "12345678"
+
+        //for the email check weather the eamil is already registered or not in the validator or over here
+        var password = "q2345678" //create a function that creates a random password 
         var landlord = new Landlord({
           name, email, username, contact, password
         });
