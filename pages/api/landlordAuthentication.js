@@ -22,6 +22,7 @@ export default async function handler(req, res) {
         await landlord.save()
         return res.status(200).json(landlord);
 
+
       } catch (error) {
         console.log(error)
         return res.status(500).json({msg: error.message});
@@ -29,6 +30,29 @@ export default async function handler(req, res) {
       } else if(req.method == 'GET') {
         // Handle any other HTTP method
         res.json("the request has been recieved");
+      } else if(req.method == 'PUT'){
+        //update the landlord data
+        
+        landlord.findByIdAndUpdate(
+
+          req.params.landlordId,
+          req.body,
+          {new:true},
+          (err, landlord) => {
+            if(err) return res.status(500).send(err);
+            return res.send(landlord);
+          }
+
+        )
+      } else if(req.method == 'DELETE'){
+        landlord.findByIdAndRemove(req.params.landlordId, (err,landord) => {
+          if(err) return res.status(500).send(err);
+          const response = {
+            message : "landlord id successfully deleted",
+            id : landlord._id
+          };
+          return res.status(200).send(response);
+        });
       }
 
 }

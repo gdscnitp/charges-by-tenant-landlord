@@ -73,3 +73,23 @@
   msg: 'Database_successfully_connected',
   body: 'success'
 }
+[2022-01-03T12:42:09.409] [INFO] DataBase - {
+  r: 'mongodb',
+  msg: 'Database_successfully_connected',
+  body: 'success'
+}
+[2022-01-03T12:42:09.414] [INFO] DataBase - {
+  r: 'mongodb',
+  msg: 'Database_successfully_connected',
+  body: 'success'
+}
+[2022-01-03T12:42:15.657] [INFO] DataBase - {
+  r: 'mongodb',
+  msg: 'Database_successfully_connected',
+  body: 'success'
+}
+[2022-01-03T12:42:15.660] [INFO] DataBase - {
+  r: 'mongodb',
+  msg: 'Database_successfully_connected',
+  body: 'success'
+}
