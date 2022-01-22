@@ -78,7 +78,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-left: 0;
+  margin-left: 0 !important;
 }
 .S_background_image {
   background: url(../public/images/coverpage2.jpg);
