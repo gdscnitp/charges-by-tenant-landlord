@@ -45,9 +45,9 @@ function Lsignup() {
     submitHandler(details);
   };
 
-  // if (state.userInfo) {
-  //   router.push("/profile/tenant");
-  // }
+  if (state.userInfo) {
+    router.push("/profile/landlord");
+  }
 
   const submitHandler = async (details) => {
     closeSnackbar();

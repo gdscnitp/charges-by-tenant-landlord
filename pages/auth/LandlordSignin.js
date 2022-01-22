@@ -38,9 +38,9 @@ function Lsignin() {
   //   id(details.email.length == 0);
   // };
 
-  // if (state.userInfo) {
-  //   router.push("/profile/tenant");
-  // }
+  if (state.userInfo) {
+    router.push("/profile/landlord");
+  }
 
   const submitHandler = async (details) => {
     closeSnackbar();
