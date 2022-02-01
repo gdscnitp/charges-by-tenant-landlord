@@ -10,7 +10,7 @@ const {isEmail, isMongoId} = require("validator")
 const bcrypt = require("bcrypt");
 const config = require("../../../config/config");
 
-export default async function (req,res){
+export default async function handler(req,res){
     if(req.method == "POST"){
         var siteId = req.body.siteId
 
@@ -31,7 +31,7 @@ export default async function (req,res){
                     landlord_id = Data.id;
                 })
 
-                if(landlord_id == siteData.landlord_id){
+                if(landlord_id == siteData?.landlord_id){
                     //removing only those tenant that are living on site, not those whose request are pending
                     if(siteData.status === "2"){
                         var historyId = siteData.history[siteData.history.length - 1]
