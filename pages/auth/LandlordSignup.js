@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import Landlord from "../../public/images/Landlord.png";
 import Home_fill from "../../public/images/Home_fill.png";
 import Ellipse47 from "../../public/images/Ellipse47.png";
@@ -83,9 +84,11 @@ function Lsignup() {
         />
         <section className="signup">
           <div className="container pr_container praj">
-            <div className="fish">
-              <Image src={Home_fill} alt="sub" />
-            </div>
+            <Link href="/homepage/HomePage">
+              <div className="fish">
+                <Image src={Home_fill} alt="sub" />
+              </div>
+            </Link>
             <div className="fishes">
               <Image src={Ellipse47} alt="sub" />
             </div>
@@ -110,6 +113,32 @@ function Lsignup() {
                       placeholder="Your Name"
                     />
                   </div>
+                  <div className="form-group pr_form-group">
+                    <label htmlFor="email">
+                      <i className="fas fa-envelope"></i>
+                    </label>
+                    <input
+                      className="pa_input"
+                      type="text"
+                      name="email"
+                      id="email"
+                      onChange={(e) => onChange(e)}
+                      placeholder="Your Email"
+                    />
+                  </div>
+                  <div className="form-group pr_form-group">
+                    <label htmlFor="name">
+                      <i className="fas fa-phone-square-alt"></i>
+                    </label>
+                    <input
+                      className="pa_input"
+                      type="number"
+                      name="contact"
+                      id="contact"
+                      onChange={(e) => onChange(e)}
+                      placeholder="Your Contact"
+                    />
+                  </div>
                   {/* <div className="form-group pr_form-group">
                     <label htmlFor="email">
                       <i className="fas fa-envelope"></i>
@@ -123,7 +152,7 @@ function Lsignup() {
                       placeholder="Your Last Name"
                     />
                   </div> */}
-                  <div className="form-group pr_form-group">
+                  {/* <div className="form-group pr_form-group">
                     <label className="pr_label" htmlFor="email">
                       <i className="fas fa-envelope"></i>
                     </label>
@@ -135,8 +164,8 @@ function Lsignup() {
                       onChange={(e) => onChange(e)}
                       placeholder="Your Email"
                     />
-                  </div>
-                  <div className="form-group pr_form-group">
+                  </div> */}
+                  {/* <div className="form-group pr_form-group">
                     <label className="pr_label" htmlFor="contact">
                       <i className="fas fa-phone-square-alt"></i>
                     </label>
@@ -148,7 +177,7 @@ function Lsignup() {
                       onChange={(e) => onChange(e)}
                       placeholder="Your Contact"
                     />
-                  </div>
+                  </div> */}
 
                   {/* <div className="form-group pr_form-group">
                     <label htmlFor="contact">
@@ -202,7 +231,7 @@ function Lsignup() {
                       </a>
                     </label>
                   </div>
-                  <div className="form-group pr_form-group form-button pr_form-button">
+                  <div className="form-group form-button pr_form-button">
                     <button
                       type="submit"
                       onClick={(e) => onSubmit(e)}

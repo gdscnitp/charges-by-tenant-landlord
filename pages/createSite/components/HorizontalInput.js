@@ -20,6 +20,7 @@ function HorizontalInput(props) {
             name={props.name}
             onChange={props.onChange}
             defaultValue={props.name == "country" ? "India" : ""}
+            required
           />
         </div>
       </div>
