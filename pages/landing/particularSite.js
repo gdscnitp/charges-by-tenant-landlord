@@ -305,23 +305,51 @@ export default function ParticularSiteComponent() {
           <div className="row">
             <div className="col-sm-12 col-lg-12 col-12">
               <div className="p_particular">
-                {state.siteDetail.current_tenant?.length > 0 ? (
+                {state.siteDetail &&
+                state.siteDetail.history &&
+                state.siteDetail.history.length > 0 ? (
                   <RentersList
                     head="Renters Alloted"
-                    tenantDetails={state.siteDetail?.current_tenant[0]}
-                    historyDetail={state.siteDetail?.history[0]}
+                    historyDetail={state.siteDetail?.history}
                     rent={state.siteDetail?.rent}
                     deposit={state.siteDetail?.deposit}
+                    tenantsDetail={state.siteDetail?.tenantsDetails}
                     flat="Flat No."
                     loc="Location"
                     rentedFrom="RentedFrom"
                     rentedTill="Rented Till"
+                    rents="Rent"
                   />
                 ) : (
                   "There no Tenant for this site"
                 )}
               </div>
+              {/* <div className="p_particular">
+                {state.siteDetail.current_tenant?.length > 0 ? (
+                  <RentersList
+                    head="Renters Alloted"
+                    historyDetail={state.siteDetail?.history}
+                    rent={state.siteDetail?.rent}
+                    deposit={state.siteDetail?.deposit}
+                    tenantsDetail={state.siteDetail?.tenantsDetails}
+                    flat="Flat No."
+                    loc="Location"
+                    rentedFrom="RentedFrom"
+                    rentedTill="Rented Till"
+                    rents="Rent"
+                  />
+                ) : (
+                  "There no Tenant for this site"
+                )}
+              </div> */}
             </div>
+          </div>
+          <AllotPopup
+            siteId={state.siteDetail?._id}
+            siteStatus={state.siteDetail?.status}
+          />
+
+          <div>
             <div className="col-sm-12 col-lg-12 col-12 mt-5">
               <div className="p_particular">
                 {state.siteCharges?.length > 0 ? (
@@ -339,10 +367,6 @@ export default function ParticularSiteComponent() {
           {/* <div className='btn3'>
                     <button className='btn1 p_btr'>Add New Tenant</button>
                 </div> */}
-          <AllotPopup
-            siteId={state.siteDetail?._id}
-            siteStatus={state.siteDetail?.status}
-          />
         </div>
       ) : (
         <div className="p_spinner">

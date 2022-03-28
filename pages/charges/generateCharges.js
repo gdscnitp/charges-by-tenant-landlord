@@ -63,7 +63,7 @@ export default function GenerateCharges() {
       if (charges_param[data].fixed) {
         tempCharges[data] = charges_param[data].value;
       } else {
-        tempCharges[data] = 0;
+        tempCharges[data] = -1;
       }
       setDescription(tempCharges);
     });
@@ -85,9 +85,10 @@ export default function GenerateCharges() {
           authorization: "b " + JSON.parse(Cookies.get("userInfo")).data.token,
         },
       };
+      console.log(state.siteDetail);
       var details = {
         site_id: state.siteDetail?._id,
-        tenant_id: state.siteDetail?.current_tenant[0]?._id,
+        tenant_id: state.siteDetail?.tenantsDetails[0]?._id,
         description,
       };
       console.log(details);
@@ -97,7 +98,7 @@ export default function GenerateCharges() {
             "/api/charges",
             {
               site_id: state.siteDetail?._id,
-              tenant_id: state.siteDetail?.current_tenant[0]?._id,
+              tenant_id: state.siteDetail?.tenantsDetails[0]?._id,
               description,
             },
             config
@@ -119,7 +120,28 @@ export default function GenerateCharges() {
   };
 
   const submitHandler = () => {
-    generateSiteCharges();
+    var correct = 0;
+    var total = 0;
+    Object.keys(description ? description : {}).map((data, index) => {
+      total++;
+      console.log(description[data] + " " + data);
+      if (description[data].fixed) {
+        correct++;
+      } else {
+        if (description[data] == -1) {
+          alert("Enter the value for the field " + data);
+          return;
+        } else if (description[data] < 0 || description[data] > 1000000) {
+          alert("Please enter valid value for " + data);
+          return;
+        } else {
+          correct++;
+        }
+      }
+    });
+    if (correct == total) {
+      generateSiteCharges();
+    }
   };
 
   return (

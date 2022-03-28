@@ -45,7 +45,11 @@ function Lsignup() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    submitHandler(details);
+    if (!details.contact.match(`[0-9]{10}`)) {
+      alert("Please provide valid phone number");
+    } else {
+      submitHandler(details);
+    }
   };
 
   if (state.userInfo) {
