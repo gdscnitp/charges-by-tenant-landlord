@@ -72,6 +72,7 @@ figure {
   top: 1vh;
   right: 0.8vw;
   z-index: 2;
+  cursor:pointer;
 }
 .fishes1 {
   position: absolute;
@@ -190,19 +191,19 @@ figure {
 }
 
 .pr_form-group {
-  position: relative;
+  width: 80%;
+  display: flex;
+  align-items: center;
   margin-bottom: 25px;
+  border-bottom: 1px solid #999;
+
   overflow: hidden;
-}
-.pr_form-group:last-child {
-  margin-bottom: 0px;
 }
 
 .pa_input {
   width: 60%;
   display: block;
   border: none;
-  border-bottom: 1px solid #999;
   padding: 6px 30px;
   font-family: Poppins !important;
   box-sizing: border-box;
@@ -210,9 +211,9 @@ figure {
   appearance: unset !important;
 }
 
-.pa_input:focus {
+/* .pr_form-group:focus {
   border-bottom: 1px solid #222;
-}
+} */
 
 .agree-term {
   display: inline-block;
@@ -462,5 +463,11 @@ label.valid:after {
     top: 1vh;
     left: 85vw;
   }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 /*# sourceMappingURL=style.css.map */
