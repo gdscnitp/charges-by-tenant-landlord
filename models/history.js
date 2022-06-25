@@ -31,4 +31,18 @@ const historySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+historySchema.pre('save', (next) => {
+  var tenantId = this.tenant_id;
+  var siteId = this.site_id;
+
+  if(tenantId && siteId){
+    if(this.status<2){
+      return Promise.reject('New document cannot be created');
+    }
+    else{
+      return next();
+    }
+  }
+})
+
 module.exports = mongoose.models.History || mongoose.model("History", historySchema);
