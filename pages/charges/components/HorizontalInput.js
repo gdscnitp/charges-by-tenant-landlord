@@ -7,6 +7,7 @@ function HorizontalInput(props) {
         </label>
         <div className="col-sm-10">
           <input
+            style={{ width: "40%" }}
             type="number"
             className="form-control"
             id="inputEmail3"

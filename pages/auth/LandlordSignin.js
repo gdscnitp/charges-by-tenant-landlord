@@ -56,7 +56,7 @@ function Lsignin() {
       router.push(redirect || "/profile/landlord");
     } catch (err) {
       console.log(err);
-      enqueueSnackbar(err.response?.data?.message, { variant: "error" });
+      // enqueueSnackbar(err.response?.data?.message, { variant: "error" });
     }
   };
   return (
@@ -79,9 +79,11 @@ function Lsignin() {
         />
         <section className="sign-in">
           <div className="container pr_container prj">
-            <div className="fish1">
-              <Image src={Home_fill} alt="sub" />
-            </div>
+            <Link href="/homepage/HomePage">
+              <div className="fish1">
+                <Image src={Home_fill} alt="sub" />
+              </div>
+            </Link>
             <div className="fishes1">
               <Image src={Ellipse47} alt="sub" />
             </div>
@@ -140,7 +142,7 @@ function Lsignin() {
                       Remember Me
                     </label>
                   </div>
-                  <div className="form-group pr_form-group form-button pr_form-button">
+                  <div className="form-group form-button pr_form-button">
                     <button
                       type="submit"
                       name="signin"
